@@ -1,0 +1,954 @@
+{
+    "location": "Via Borgo Dora, 33 8\u00b0 Piano (eight floor), Turin, Piedmont 10152, Italy",
+    "places": [
+        {
+            "formatted_address": "Via Accademia delle Scienze, 5, 10123 Torino TO, Italy",
+            "geometry": {
+                "location": {
+                    "lat": 45.068983,
+                    "lng": 7.6855873
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 45.07033857989273,
+                        "lng": 7.686519679892722
+                    },
+                    "southwest": {
+                        "lat": 45.06763892010729,
+                        "lng": 7.683820020107278
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png",
+            "id": "87c99c82851aab2bd46e35e1967c3704118f6c5b",
+            "name": "Palazzo Carignano",
+            "opening_hours": {
+                "open_now": false
+            },
+            "photos": [
+                {
+                    "height": 4128,
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/101561242851376773178/photos\">Fabio Grano</a>"
+                    ],
+                    "photo_reference": "CmRaAAAAMOdTQbO3vYh1ieYIuyttpkuw3vaHHezaeHDPIuZ10fkJBsd9_UN6NkMl7y5EMqBdQBw8UCZEo_LaPa-iuJotSjUfpf11rWMDMrKYrSstMuqa0PzJo0NLNRDLZqaf_oHQEhB8Y_C4-KWBgK_AbQD_jArGGhTyXjXbEZ_uZXqn7gD8mYSeNQONKg",
+                    "width": 2322
+                }
+            ],
+            "place_id": "ChIJkcpZJ3BtiEcRpdJxhuARX24",
+            "plus_code": {
+                "compound_code": "3M9P+H6 Turin, Metropolitan City of Turin, Italy",
+                "global_code": "8FQ93M9P+H6"
+            },
+            "rating": 4.6,
+            "reference": "ChIJkcpZJ3BtiEcRpdJxhuARX24",
+            "types": [
+                "premise",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 1376
+        },
+        {
+            "formatted_address": "Via Montebello, 20, 10124 Torino TO, Italy",
+            "geometry": {
+                "location": {
+                    "lat": 45.06901130000001,
+                    "lng": 7.693216199999999
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 45.07044042989272,
+                        "lng": 7.694431779892722
+                    },
+                    "southwest": {
+                        "lat": 45.06774077010728,
+                        "lng": 7.691732120107278
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+            "id": "30bb61450c815dca2d504a12dff147d15cc1d3db",
+            "name": "Mole Antonelliana",
+            "opening_hours": {
+                "open_now": true
+            },
+            "photos": [
+                {
+                    "height": 4032,
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/113761634889042121356/photos\">Philippe Francois</a>"
+                    ],
+                    "photo_reference": "CmRaAAAA6Qwy91dSaBwOx3Zvweg-HAh2a2KcJGtpNrjUGuUyHf46_TTTCoVDGOuWorAhsKewUO-jdG0IfkbMCkoG2-Oc2EctK3FFGUvTVgevagbevruylsG1eaB842BmN6-W_ljREhDMyknWFMZppmLM3Wwte8nKGhTgr8zf7rOC_hWoSj77edaoTpUF7g",
+                    "width": 2268
+                }
+            ],
+            "place_id": "ChIJdeBgpXxtiEcRCA1w65O0FjM",
+            "plus_code": {
+                "compound_code": "3M9V+J7 Turin, Metropolitan City of Turin, Italy",
+                "global_code": "8FQ93M9V+J7"
+            },
+            "rating": 4.6,
+            "reference": "ChIJdeBgpXxtiEcRCA1w65O0FjM",
+            "types": [
+                "museum",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 14805
+        },
+        {
+            "formatted_address": "Piazzetta Reale, 1, 10122 Torino TO, Italy",
+            "geometry": {
+                "location": {
+                    "lat": 45.0728337,
+                    "lng": 7.686331699999999
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 45.07461840000001,
+                        "lng": 7.687166100000001
+                    },
+                    "southwest": {
+                        "lat": 45.06935359999999,
+                        "lng": 7.6838285
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/museum-71.png",
+            "id": "a8de9d45d0aba1fd551abad073017869a69cbea9",
+            "name": "Royal Palace of Turin",
+            "opening_hours": {
+                "open_now": false
+            },
+            "photos": [
+                {
+                    "height": 2268,
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/108989288901073256908/photos\">Samad Memon</a>"
+                    ],
+                    "photo_reference": "CmRaAAAAqaamM9eahFYxHKZg8NS3KhoUPizLB7u8Vw_uzjJvs_FQMu1KU2rhHb1IzT4Hfyx8u9xNBYKPdDKqDx0QM_hPTj6PAA7mjQFz3hbwEEHTy8L9zit8M9eqB6-gbvtVxZtaEhDhiudD7mdiltwDtEXseaCHGhQiMOGndOgjreqnRWTkpT9NY2Qalw",
+                    "width": 4032
+                }
+            ],
+            "place_id": "ChIJC-rXcnBtiEcRjK-icXN-bd8",
+            "plus_code": {
+                "compound_code": "3MFP+4G Turin, Metropolitan City of Turin, Italy",
+                "global_code": "8FQ93MFP+4G"
+            },
+            "rating": 4.6,
+            "reference": "ChIJC-rXcnBtiEcRjK-icXN-bd8",
+            "types": [
+                "museum",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 1445
+        },
+        {
+            "formatted_address": "Piazza Castello, 10122 Torino TO, Italy",
+            "geometry": {
+                "location": {
+                    "lat": 45.0709514,
+                    "lng": 7.685892999999999
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 45.07250717989272,
+                        "lng": 7.688457400000005
+                    },
+                    "southwest": {
+                        "lat": 45.06980752010728,
+                        "lng": 7.683448199999996
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png",
+            "id": "e709f015e1abf7312d295b2988a69aa3ed9b4f70",
+            "name": "Madama Palace",
+            "opening_hours": {
+                "open_now": false
+            },
+            "photos": [
+                {
+                    "height": 2988,
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/116273307034601921788/photos\">Marcello Cantelmi</a>"
+                    ],
+                    "photo_reference": "CmRaAAAAMd7MoFUgmaSoYyRpJG1JFGf3BcWiJsr6FRIYBPayT4g2dUx88IW9tvP0787kRJSL-2UGUYYA7-FMxbhyOO-eJuCD70HHIEHqZsbhp_6TxhUblQAUj0DTrflLSnVlVpl7EhC8l_JzsnF4_R1rHlCmPcEsGhQkSQ8Kp6YCpQa_C9tXPfiE0RDnXg",
+                    "width": 5312
+                }
+            ],
+            "place_id": "ChIJM5X2P3BtiEcRm_qiGkV47yI",
+            "plus_code": {
+                "compound_code": "3MCP+99 Turin, Metropolitan City of Turin, Italy",
+                "global_code": "8FQ93MCP+99"
+            },
+            "rating": 4.6,
+            "reference": "ChIJM5X2P3BtiEcRm_qiGkV47yI",
+            "types": [
+                "premise",
+                "museum",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 2330
+        },
+        {
+            "formatted_address": "Viale Virgilio, 107, 10126 Torino TO, Italy",
+            "geometry": {
+                "location": {
+                    "lat": 45.0490663,
+                    "lng": 7.6851156
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 45.04997857989272,
+                        "lng": 7.686562879892724
+                    },
+                    "southwest": {
+                        "lat": 45.04727892010728,
+                        "lng": 7.683863220107281
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/museum-71.png",
+            "id": "66a3bca66df219d023327b9e93dd530a66b37a51",
+            "name": "Borgo Medievale",
+            "opening_hours": {
+                "open_now": true
+            },
+            "photos": [
+                {
+                    "height": 2976,
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/111505780024654589482/photos\">Giorgio Carone</a>"
+                    ],
+                    "photo_reference": "CmRaAAAA0AfgKp5aZVjKC1qTfnUVCWCYR7qOPs13G29jKz6hFkNs-KUJaoH4xs2YJw1kLjxsUIBtvHwI988pxw8ic1xwLk7bb417VkxCOoFwz0I7RaUBfV8Ovn3aNSoaea_lVBnmEhDtTUPeZqEP3dX8xnA3xXCfGhTY6snPgWmurOIWBhIGF4hOf9EhEg",
+                    "width": 3968
+                }
+            ],
+            "place_id": "ChIJ1c5H7VBtiEcRo6GyHqTYr2A",
+            "plus_code": {
+                "compound_code": "2MXP+J2 Turin, Metropolitan City of Turin, Italy",
+                "global_code": "8FQ92MXP+J2"
+            },
+            "rating": 4.5,
+            "reference": "ChIJ1c5H7VBtiEcRo6GyHqTYr2A",
+            "types": [
+                "museum",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 3138
+        },
+        {
+            "formatted_address": "Via Accademia delle Scienze, 6, 10123 Torino TO, Italy",
+            "geometry": {
+                "location": {
+                    "lat": 45.0684296,
+                    "lng": 7.684304099999999
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 45.06972227989273,
+                        "lng": 7.685875529892722
+                    },
+                    "southwest": {
+                        "lat": 45.06702262010728,
+                        "lng": 7.683175870107278
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/museum-71.png",
+            "id": "392868debd4e055713373861499b981cef03c1dc",
+            "name": "Egyptian Museum",
+            "opening_hours": {
+                "open_now": false
+            },
+            "photos": [
+                {
+                    "height": 2988,
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/104780946239547668740/photos\">Alessandra T.</a>"
+                    ],
+                    "photo_reference": "CmRaAAAAo1Dyx9PwZrMcZaxLV99VxAjluqJGx4QNU_lQDqDi2RBtbcvAw50FiLc5cS0yAfCLdk2rTgAXc7iPGo_81hnZieSfCtuSo3qjstzQJrRK_cB8hnrlOG11PD17XqNwfjUfEhD4MKytmDLFtNZCxgJ08PReGhRnAMA8qzA-wJPkrfN3Nez4MV67HQ",
+                    "width": 5312
+                }
+            ],
+            "place_id": "ChIJcbdhzm9tiEcRV5jbgVsAy24",
+            "plus_code": {
+                "compound_code": "3M9M+9P Turin, Metropolitan City of Turin, Italy",
+                "global_code": "8FQ93M9M+9P"
+            },
+            "rating": 4.7,
+            "reference": "ChIJcbdhzm9tiEcRV5jbgVsAy24",
+            "types": [
+                "museum",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 17013
+        },
+        {
+            "formatted_address": "Corso Massimo d'Azeglio, 10126 Torino TO, Italy",
+            "geometry": {
+                "location": {
+                    "lat": 45.0548469,
+                    "lng": 7.686736100000001
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 45.06225629999999,
+                        "lng": 7.694515900000003
+                    },
+                    "southwest": {
+                        "lat": 45.04629470000001,
+                        "lng": 7.677893499999999
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/generic_recreational-71.png",
+            "id": "e9565644421595ad01dc6dce7c657dd04d259b2d",
+            "name": "Parco del Valentino",
+            "opening_hours": {
+                "open_now": true
+            },
+            "photos": [
+                {
+                    "height": 3024,
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/106511517049970416052/photos\">Giorgio Pais</a>"
+                    ],
+                    "photo_reference": "CmRaAAAAIu-GMi4k1tP576Q6CImfxanRzBV5oW8VQg2xyTQypzprLip7Sv4BumQiQbLnY4rxJyu7SCCBu8ospfZ_G933HHedHepLdPFOkLrSWLr9NyBmRQlapEZm4dUTCYZClgyEEhBGy2MuIYtSChlbLle51h9aGhQOVytUIBF9dI4A6pig-hQweViP2A",
+                    "width": 4032
+                }
+            ],
+            "place_id": "ChIJ93xTW1ptiEcRjz5o71wyKjA",
+            "plus_code": {
+                "compound_code": "3M3P+WM Turin, Metropolitan City of Turin, Italy",
+                "global_code": "8FQ93M3P+WM"
+            },
+            "rating": 4.5,
+            "reference": "ChIJ93xTW1ptiEcRjz5o71wyKjA",
+            "types": [
+                "park",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 14389
+        },
+        {
+            "formatted_address": "Corso Unit\u00e0 d'Italia, 40, 10126 Torino TO, Italy",
+            "geometry": {
+                "location": {
+                    "lat": 45.0318507,
+                    "lng": 7.673582799999999
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 45.03299642989272,
+                        "lng": 7.675393829892721
+                    },
+                    "southwest": {
+                        "lat": 45.03029677010728,
+                        "lng": 7.672694170107278
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/museum-71.png",
+            "id": "70b7ba5aa6c81adcccb9a825b31309c31ef5a72b",
+            "name": "Museo Nazionale dell'Automobile",
+            "opening_hours": {
+                "open_now": false
+            },
+            "photos": [
+                {
+                    "height": 332,
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/113594486535472958869/photos\">Museo dell&#39;Automobile di Torino</a>"
+                    ],
+                    "photo_reference": "CmRZAAAApnhGy9ikx_M3v2EfgPbckfYR30seryzEeiXhs9q2ypwZsD7AWKz8T_PoIp_ZclqDBVojAKLklSCqOQ6Ixk_vhNx3ztAh-umeyKyEuNt49tpPB_R9-bLrcZZi499-lQZvEhB5aOaqpEgYKKrqbTrHIkH8GhSseiR5Vwekq05KS99qHey8PCne8Q",
+                    "width": 800
+                }
+            ],
+            "place_id": "ChIJh1nvjroSiEcRMmGulpZu_Aw",
+            "plus_code": {
+                "compound_code": "2MJF+PC Turin, Metropolitan City of Turin, Italy",
+                "global_code": "8FQ92MJF+PC"
+            },
+            "rating": 4.6,
+            "reference": "ChIJh1nvjroSiEcRMmGulpZu_Aw",
+            "types": [
+                "museum",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 5089
+        },
+        {
+            "formatted_address": "Piazza San Giovanni, 10122 Torino TO, Italy",
+            "geometry": {
+                "location": {
+                    "lat": 45.0731883,
+                    "lng": 7.6858594
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 45.07475897989273,
+                        "lng": 7.686900449999999
+                    },
+                    "southwest": {
+                        "lat": 45.07205932010729,
+                        "lng": 7.682736250000001
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/worship_general-71.png",
+            "id": "0409226a6a609de5ab0f1857671033a58977dacb",
+            "name": "Cappella della Sacra Sindone",
+            "photos": [
+                {
+                    "height": 3968,
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/102807333509484128015/photos\">Maria Silvia Conte</a>"
+                    ],
+                    "photo_reference": "CmRaAAAAP08P_ldgsYhz1lAyQIY771Gfrs4cP0eyqKUOprZuC1hIV22c0odeS24Y-NPt_Rm9UwLn4RpyHTJmD9zr_U8RNw1YcfJjqoyl9qMqBVhIb67W0RM9kY9MbanzxfQ2epQCEhAaMNwYo1PWZq0OrApVkRFhGhSqCoSPcIv7o617pkXa5sO2axBriw",
+                    "width": 2976
+                }
+            ],
+            "place_id": "ChIJhZ-W2nBtiEcRa6mT7Ot8Mdw",
+            "plus_code": {
+                "compound_code": "3MFP+78 Turin, Metropolitan City of Turin, Italy",
+                "global_code": "8FQ93MFP+78"
+            },
+            "rating": 4.6,
+            "reference": "ChIJhZ-W2nBtiEcRa6mT7Ot8Mdw",
+            "types": [
+                "church",
+                "place_of_worship",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 761
+        },
+        {
+            "formatted_address": "Piazza della Consolata, 10122 Torino TO, Italy",
+            "geometry": {
+                "location": {
+                    "lat": 45.07659839999999,
+                    "lng": 7.6790063
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 45.07789782989273,
+                        "lng": 7.680257529892723
+                    },
+                    "southwest": {
+                        "lat": 45.07519817010728,
+                        "lng": 7.677557870107279
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/worship_general-71.png",
+            "id": "25ff9d468a4ee42d3ff78ffdecc2e2b25e58b743",
+            "name": "Santuario della Consolata",
+            "photos": [
+                {
+                    "height": 1200,
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/103776331557243231982/photos\">Jolanta \u0141.</a>"
+                    ],
+                    "photo_reference": "CmRaAAAAWO-HGkZA8f7vd0DkSPJ5i_HoxIUlwRX6mHjH5PaPKcYZvqNw3mT3yH5kIAG2dXP4jkFN7uRWlwusIKruzIU6tbFHc6EzudDX8lqMZC33Rc0VknCFLVrf7ugybuLyJAGMEhCDa7FertFKeJugvNowgXVjGhSviKv8OW-34cEu1NDjcRqOxIOcaQ",
+                    "width": 1600
+                }
+            ],
+            "place_id": "ChIJ9VNv13RtiEcREH3Wo6DGe-o",
+            "plus_code": {
+                "compound_code": "3MGH+JJ Turin, Metropolitan City of Turin, Italy",
+                "global_code": "8FQ93MGH+JJ"
+            },
+            "rating": 4.7,
+            "reference": "ChIJ9VNv13RtiEcREH3Wo6DGe-o",
+            "types": [
+                "church",
+                "place_of_worship",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 547
+        },
+        {
+            "formatted_address": "Strada Comunale Santa Margherita, 79, 10131 Torino TO, Italy",
+            "geometry": {
+                "location": {
+                    "lat": 45.0579816,
+                    "lng": 7.708304000000001
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 45.05939852989271,
+                        "lng": 7.709238329892721
+                    },
+                    "southwest": {
+                        "lat": 45.05669887010727,
+                        "lng": 7.706538670107277
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/museum-71.png",
+            "id": "442e5d4c1e8b151fa8e1c11bb80ad1a53ff154ba",
+            "name": "Villa della Regina",
+            "opening_hours": {
+                "open_now": false
+            },
+            "photos": [
+                {
+                    "height": 4160,
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/115590854571006201825/photos\">Giovanni Perrone</a>"
+                    ],
+                    "photo_reference": "CmRaAAAAmlrG4HgT0GBXaB1YrAlVtcejTuNBQSDt1Hza9TJ-unHz4wOZuD_PHqFcftWQrUR7BMRG1gr_I-NtzW-mRfFAsNeP3YwM8tsVxN2eyTOrnEmWCwpHryv5JFYo-yTY-GJ3EhDdm9joCWzT6LxEUS1Qll5HGhQSHZ-HDdoYCaiS5Mu-IPv6t5czRw",
+                    "width": 3120
+                }
+            ],
+            "place_id": "ChIJiamgep5yiEcROZXLNoJ7lQw",
+            "plus_code": {
+                "compound_code": "3P55+58 Turin, Metropolitan City of Turin, Italy",
+                "global_code": "8FQ93P55+58"
+            },
+            "rating": 4.4,
+            "reference": "ChIJiamgep5yiEcROZXLNoJ7lQw",
+            "types": [
+                "museum",
+                "park",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 1594
+        },
+        {
+            "formatted_address": "Via Palazzo di Citt\u00e0, 4, 10122 Torino TO, Italy",
+            "geometry": {
+                "location": {
+                    "lat": 45.0721131,
+                    "lng": 7.684893000000001
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 45.07339247989272,
+                        "lng": 7.686199479892722
+                    },
+                    "southwest": {
+                        "lat": 45.07069282010728,
+                        "lng": 7.683499820107278
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/worship_general-71.png",
+            "id": "5d0d6a7df2b6f74c8426c086bf00bfa58f5b61f7",
+            "name": "Royal Church of San Lorenzo",
+            "photos": [
+                {
+                    "height": 2048,
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/113478469700423985780/photos\">Louis Colbosc</a>"
+                    ],
+                    "photo_reference": "CmRaAAAAVR6TObxDncmQUSJyQ0gQdHPJAr5MQ4ZEGQFO_sDvkgRvmT22T7-K5qSJpsrmEJxXrofQbHwCQnE0R6KVevUWUyZ1CetzSja3i_6YmmFwYU42Ntz9yGBJzfQB6Gg1VBt1EhCx5RcWyNtRR9iO6ZK0_JeNGhTJKGqC1hH2PNOgJ5UpPPn1tIU4FQ",
+                    "width": 1536
+                }
+            ],
+            "place_id": "ChIJfxChMHFtiEcRxVcnUGWmbpQ",
+            "plus_code": {
+                "compound_code": "3MCM+RX Turin, Metropolitan City of Turin, Italy",
+                "global_code": "8FQ93MCM+RX"
+            },
+            "rating": 4.7,
+            "reference": "ChIJfxChMHFtiEcRxVcnUGWmbpQ",
+            "types": [
+                "church",
+                "place_of_worship",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 241
+        },
+        {
+            "formatted_address": "Piazzetta Reale, 1, 10122 Torino TO, Italy",
+            "geometry": {
+                "location": {
+                    "lat": 45.071776,
+                    "lng": 7.686192999999999
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 45.07298062989271,
+                        "lng": 7.687638329892721
+                    },
+                    "southwest": {
+                        "lat": 45.07028097010727,
+                        "lng": 7.684938670107277
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/museum-71.png",
+            "id": "9da57ee60889383f83c04da673798e0e3afe2d7f",
+            "name": "Armeria Reale",
+            "opening_hours": {
+                "open_now": false
+            },
+            "photos": [
+                {
+                    "height": 3120,
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/115230670236477406235/photos\">gabriele</a>"
+                    ],
+                    "photo_reference": "CmRaAAAAdOj4FU4sxCNjXKAYcoRYhyUvtBQyo6a8My2vmA9FDlobNokCJBZnmGDgzCgs7mjr2gHcJu66pBNq3SCxfeUFlTi4cjCgcxjXzWg2jAUZ8f0R9hsXXin_EQ-fuKG6EHGREhBq4ApFoT-w-DZS9AMQD9-QGhQrcrKO3W6nCcQSEun0Q5sGJ_vLyQ",
+                    "width": 4160
+                }
+            ],
+            "place_id": "ChIJw7Z7bnBtiEcRcrVwkBWPd9s",
+            "plus_code": {
+                "compound_code": "3MCP+PF Turin, Metropolitan City of Turin, Italy",
+                "global_code": "8FQ93MCP+PF"
+            },
+            "rating": 4.7,
+            "reference": "ChIJw7Z7bnBtiEcRcrVwkBWPd9s",
+            "types": [
+                "museum",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 358
+        },
+        {
+            "formatted_address": "Via Montebello, 20, A, 10124 Torino TO, Italy",
+            "geometry": {
+                "location": {
+                    "lat": 45.06913249999999,
+                    "lng": 7.6931169
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 45.07057047989272,
+                        "lng": 7.694623529892722
+                    },
+                    "southwest": {
+                        "lat": 45.06787082010727,
+                        "lng": 7.691923870107278
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/museum-71.png",
+            "id": "176ddb8b298d90ea5a561e8796d2e5389f153ecf",
+            "name": "National Cinema Museum",
+            "opening_hours": {
+                "open_now": true
+            },
+            "photos": [
+                {
+                    "height": 2848,
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/110457401382799460935/photos\">Giulia Bianconi</a>"
+                    ],
+                    "photo_reference": "CmRaAAAAk3NB5hd0cKt3zF8Okxyp58ctumJ7ytHDZjSI-fUwuKZpUER8kC0Nc-gBpj4iTmUS2TqQYDK_MX-qoVWV6Y-XBw3Fc4MRFKpA86Y4j6dCX6G01buf9Vc8sgYI2gPnOmuHEhCb3dYNpZwDu_6hg140uThKGhT8bLt35pa8X0V-T1xyaUezoIV9FQ",
+                    "width": 4272
+                }
+            ],
+            "place_id": "ChIJjSNMz3FtiEcRVrux5-DQUi4",
+            "plus_code": {
+                "compound_code": "3M9V+M6 Turin, Metropolitan City of Turin, Italy",
+                "global_code": "8FQ93M9V+M6"
+            },
+            "rating": 4.6,
+            "reference": "ChIJjSNMz3FtiEcRVrux5-DQUi4",
+            "types": [
+                "museum",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 5176
+        },
+        {
+            "formatted_address": "Via Accademia delle Scienze, 5, 10123 Torino TO, Italy",
+            "geometry": {
+                "location": {
+                    "lat": 45.0687897,
+                    "lng": 7.6860541
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 45.06987567989271,
+                        "lng": 7.687487629892721
+                    },
+                    "southwest": {
+                        "lat": 45.06717602010727,
+                        "lng": 7.684787970107277
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/museum-71.png",
+            "id": "724125d1eec8295c066d92ff400a931c6bf3ed7e",
+            "name": "Museo Nazionale del Risorgimento Italiano",
+            "opening_hours": {
+                "open_now": false
+            },
+            "photos": [
+                {
+                    "height": 3456,
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/112016615487175169406/photos\">Flavio Bruno</a>"
+                    ],
+                    "photo_reference": "CmRaAAAAKjYFo_ws7xwRydQarcrOXHwXUD5IPZwtuGGyadV67KGDVE_RZGNkF1vWLywrmSZfD6y6Hlql1fPpD1nEu8oJIZN8WmZkNWlPIvwK7Mhc7y-OdohureS9Z2JqNupTYZdyEhA-dSBDPh9BeWQbfq8d--tPGhTjijk9CFb2L3XBI2G2RlJ-9j3_4g",
+                    "width": 5184
+                }
+            ],
+            "place_id": "ChIJkcpZJ3BtiEcRqk2ms4KxD78",
+            "plus_code": {
+                "compound_code": "3M9P+GC Turin, Metropolitan City of Turin, Italy",
+                "global_code": "8FQ93M9P+GC"
+            },
+            "rating": 4.5,
+            "reference": "ChIJkcpZJ3BtiEcRqk2ms4KxD78",
+            "types": [
+                "museum",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 699
+        },
+        {
+            "formatted_address": "Piazzale Monte dei Cappuccini, 3, 10131 Torino TO, Italy",
+            "geometry": {
+                "location": {
+                    "lat": 45.05953179999999,
+                    "lng": 7.697408800000001
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 45.06095102989272,
+                        "lng": 7.698711679892722
+                    },
+                    "southwest": {
+                        "lat": 45.05825137010728,
+                        "lng": 7.696012020107278
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/worship_general-71.png",
+            "id": "4957c8f76b6124cb60699ccd526aab0395d4c76f",
+            "name": "Santa Maria del Monte dei Cappuccini",
+            "photos": [
+                {
+                    "height": 3024,
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/103494406410160960560/photos\">Marco Venturin</a>"
+                    ],
+                    "photo_reference": "CmRaAAAAEBU7ex9ygIU092rD5f4QdPPQF6V6CT90yfnpvgu0emUOpH-aSkGq31gcMhv5YBiupONUPMZCbt26FlR8Th7aDrqNTrDs5gsGqpgvRCRicApKhW6tJquc9y6ChCcpbLSHEhAdahWd20v_SnUKQiNhErmcGhR6oCmIeNG6UDCo00IJGURabbMoXQ",
+                    "width": 4032
+                }
+            ],
+            "place_id": "ChIJPdjvk59yiEcRwFr_jW3XZx8",
+            "plus_code": {
+                "compound_code": "3M5W+RX Turin, Metropolitan City of Turin, Italy",
+                "global_code": "8FQ93M5W+RX"
+            },
+            "rating": 4.7,
+            "reference": "ChIJPdjvk59yiEcRwFr_jW3XZx8",
+            "types": [
+                "church",
+                "place_of_worship",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 707
+        },
+        {
+            "formatted_address": "Via Francesco Guicciardini, 7, A, 10121 Torino TO, Italy",
+            "geometry": {
+                "location": {
+                    "lat": 45.0720856,
+                    "lng": 7.668479
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 45.07346067989272,
+                        "lng": 7.669763279892722
+                    },
+                    "southwest": {
+                        "lat": 45.07076102010728,
+                        "lng": 7.667063620107278
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/museum-71.png",
+            "id": "1a0fb9177f4768618c5cd84f0fa0235991df0879",
+            "name": "Museo Civico Pietro Micca e dell\u2019Assedio di Torino del 1706",
+            "opening_hours": {
+                "open_now": false
+            },
+            "photos": [
+                {
+                    "height": 3264,
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/106212324821972051602/photos\">Rick Stapel</a>"
+                    ],
+                    "photo_reference": "CmRaAAAAPCigydkOzns_Dhb0EdERX9Me1T6q_Q0UOm0fKC1A-t3ra-WQsxgikVoLEAXIzyJMl1GzOADeu6fM2RXNa2C302vcrkdadjoMF-qLIQRXWK-gMf5nH39Mgq3FktgZtbL-EhDCZQog_2c5NnI_9xXm3jFFGhTr9Lbo5HSndyMDHwtWn6StjXMzcQ",
+                    "width": 3952
+                }
+            ],
+            "place_id": "ChIJJ2fDUg5tiEcRnW6V51lf3fA",
+            "plus_code": {
+                "compound_code": "3MC9+R9 Turin, Metropolitan City of Turin, Italy",
+                "global_code": "8FQ93MC9+R9"
+            },
+            "rating": 4.6,
+            "reference": "ChIJJ2fDUg5tiEcRnW6V51lf3fA",
+            "types": [
+                "museum",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 436
+        },
+        {
+            "formatted_address": "Via San Domenico, 11, 10122 Torino TO, Italy",
+            "geometry": {
+                "location": {
+                    "lat": 45.0747265,
+                    "lng": 7.680181600000001
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 45.07606367989271,
+                        "lng": 7.681581479892722
+                    },
+                    "southwest": {
+                        "lat": 45.07336402010727,
+                        "lng": 7.678881820107279
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/museum-71.png",
+            "id": "9ccd2b6dad646678b7ea7c9b1728df31012a926f",
+            "name": "Museum of Eastern Art",
+            "opening_hours": {
+                "open_now": false
+            },
+            "photos": [
+                {
+                    "height": 3096,
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/114105915944060398042/photos\">roberta peddes</a>"
+                    ],
+                    "photo_reference": "CmRaAAAAdyJAJ78U4pdw5J3wXGwSLcGnpT8EqNzEAQpsDXWhHulWE0LlBQBAfgUStDvK2nojGDzQtDLtsOhHMfN91fepCuRW3iKWckwSfGyEM0ewpfChEQ3O8SntmMkuXiwNntKgEhD5bT-apvBk_xFFCO0h78CXGhQYWnDO7ZndAloBun-KA0u7zhgvDA",
+                    "width": 4128
+                }
+            ],
+            "place_id": "ChIJgSTNYnRtiEcRjUwgYQojTIk",
+            "plus_code": {
+                "compound_code": "3MFJ+V3 Turin, Metropolitan City of Turin, Italy",
+                "global_code": "8FQ93MFJ+V3"
+            },
+            "rating": 4.5,
+            "reference": "ChIJgSTNYnRtiEcRjUwgYQojTIk",
+            "types": [
+                "museum",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 1550
+        },
+        {
+            "formatted_address": "Via Maria Ausiliatrice, 32, 10152 Torino TO, Italy",
+            "geometry": {
+                "location": {
+                    "lat": 45.0810715,
+                    "lng": 7.6759955
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 45.08221497989272,
+                        "lng": 7.677231629892723
+                    },
+                    "southwest": {
+                        "lat": 45.07951532010728,
+                        "lng": 7.674531970107279
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/worship_general-71.png",
+            "id": "f89bfcf30190bfc987b4e4c05e1d07d00451c17c",
+            "name": "Basilica of Mary Help of Christians",
+            "photos": [
+                {
+                    "height": 3024,
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/107770325522618551950/photos\">A Google User</a>"
+                    ],
+                    "photo_reference": "CmRaAAAAZHBVvNWZeGjIQhOMU4X0w6LiYBPfXxp3mYP8jev-sPe4evD8dbWek_wmntd6Eqy8KzLxftnksluvaDkMg-00-oUL41vQk4f4TMZwQKtMPS4gzadfDu2MrV8mrT0sji1YEhDMS847REst27J5zTQif-u_GhTHBdjznMSMukLHe4pAAtphKqvMzg",
+                    "width": 4032
+                }
+            ],
+            "place_id": "ChIJ3Zvo9qBtiEcRPzw5Fyx1FS4",
+            "plus_code": {
+                "compound_code": "3MJG+C9 Turin, Metropolitan City of Turin, Italy",
+                "global_code": "8FQ93MJG+C9"
+            },
+            "rating": 4.8,
+            "reference": "ChIJ3Zvo9qBtiEcRPzw5Fyx1FS4",
+            "types": [
+                "church",
+                "place_of_worship",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 526
+        },
+        {
+            "formatted_address": "Corso Gaetano Scirea, 50, 10151 Torino TO, Italy",
+            "geometry": {
+                "location": {
+                    "lat": 45.109569,
+                    "lng": 7.641264399999999
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 45.1149544,
+                        "lng": 7.648959799999999
+                    },
+                    "southwest": {
+                        "lat": 45.1040096,
+                        "lng": 7.633741399999996
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+            "id": "0437946d12539f64a6c48dd4a2c07c1c2e25bd5d",
+            "name": "Allianz Stadium",
+            "photos": [
+                {
+                    "height": 902,
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/101702550963810060849/photos\">parminder kumar</a>"
+                    ],
+                    "photo_reference": "CmRaAAAA_5_OMywILcPDP45zUXoGx4VDmgCsv72umhvPBVL9MLogqnxXQlKObO5Wdgsr_8uLNluMl0E2mxy64_UumGcNuS1Jx2TSugXvqGBjbVURVR9wrQyzH_OEIkP8RaL7xlaoEhCnY3HQvxfwzn_JDr3gwPVNGhRjsbGImQNVCubag4eaEbJRZSmcug",
+                    "width": 1450
+                }
+            ],
+            "place_id": "ChIJN06B9xdsiEcRpY2NqISAvuM",
+            "plus_code": {
+                "compound_code": "4J5R+RG Turin, Metropolitan City of Turin, Italy",
+                "global_code": "8FQ94J5R+RG"
+            },
+            "rating": 4.7,
+            "reference": "ChIJN06B9xdsiEcRpY2NqISAvuM",
+            "types": [
+                "stadium",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 22435
+        }
+    ]
+}
