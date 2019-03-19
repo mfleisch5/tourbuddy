@@ -9,7 +9,6 @@ class Tour:
         self.places = None
         self.initialize(location, json_data)
 
-
     def get_locality(self):
         query = 'https://maps.googleapis.com/maps/api/' \
                 'geocode/json?address={}&key={}'.format(self.location.replace(' ', '+'), API)
@@ -33,7 +32,6 @@ class Tour:
         del self.places[20:]
         print(*[(dest['name'], dest['types'], dest['user_ratings_total']) for dest in self.places], sep='\n')
 
-
     def initialize(self, location, dest_json):
         if bool(location) == bool(dest_json):
             raise ValueError("Input must be either location string or json destination")
@@ -48,6 +46,6 @@ class Tour:
         self.filter_destinations()
 
 
-tour1 = Tour(json_data='turin.json')
-#tour1.filter_destinations()
-tour2.filter_destinations()
+tour1 = Tour(location='23 Worcester Sq, 02118')
+tour1.filter_destinations()
+# tour2.filter_destinations()
