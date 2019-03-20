@@ -46,6 +46,25 @@ class Tour:
         self.filter_destinations()
 
 
+class TourPlanner:
+    def __init__(self, visited, time, nodes, base):
+        pass
+
+    def current_state(self):
+        pass
+
+    def score(self):
+        pass
+
+    def next_stop(self):
+        pass
+
+    def is_plausible(self):
+        pass
+
+    def search(self):
+        pass
+
 tour1 = Tour(location='23 Worcester Sq, 02118')
 tour1.filter_destinations()
 # tour2.filter_destinations()
