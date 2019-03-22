@@ -53,8 +53,21 @@ class TourPlanner:
     def current_state(self):
         pass
 
-    def score(self):
-        pass
+    def score(self, state, visited, nodes):
+        #check if starting location
+        if bool(state['rating']) and bool(state['user_ratings_total']):
+            #if not, assign score as (rating/5 * number of reviews)/number of reviews * remaining nodes
+            #makes heuristic always < the number of nodes remaining, which is the max true cost-to-go when the cost is
+            #always 1
+            remaining = len(nodes) - len(visited)
+            reviews = state['user_ratings_total']
+            rating = state['rating'] / 5
+            score = ((rating * reviews) / reviews) * remaining
+        else:
+            #if starting state or has no reviews, assign score of 0
+            score = 0
+
+        return score
 
     def next_stop(self):
         pass
@@ -62,7 +75,28 @@ class TourPlanner:
     def is_plausible(self):
         pass
 
-    def search(self):
+    def search(self, base, visited, nodes):
+        # Need a priority queue to account for cost
+        fringe = utils.PriorityQueue()
+
+        start = (base, [], 0)  # (node, path, cost)
+        fringe.push(start, 0)
+        
+        while not fringe.isEmpty():
+            (node, path, cost) = fringe.pop()
+
+            if node == base and not path.isEmpty():
+                return path
+
+            if not node in visited:
+                visited.add(node)
+                for n, action, cost in self.next_stop():
+                    nCost = 1 + cost
+                    nPath = path + [action]
+                    state = (n, nPath, nCost)
+                    priority = self.score(n, visited, nodes) + nCost
+                    fringe.push(state, priority)
+
         pass
 
 tour1 = Tour(location='23 Worcester Sq, 02118')
