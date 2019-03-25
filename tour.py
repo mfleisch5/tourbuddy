@@ -8,8 +8,8 @@ class Stop:
         self.address = data['formatted_address']
         self.x, self.y = tuple(data['geometry']['location'].values())
         self.name = data['name']
-        self.rating = data['rating']
-        self.reviews = data['user_ratings_total']
+        self.rating = float(data['rating'])
+        self.reviews = float(data['user_ratings_total'])
 
     def __eq__(self, o):
         return isinstance(o, Stop) and self.name == o.name and (self.x, self.y) == (o.x, o.y)
@@ -48,7 +48,6 @@ class Tour:
         del self.places[20:]
         self.stops = set(Stop(place) for place in self.places)
 
-
     def initialize(self, location, dest_json):
         if bool(location) == bool(dest_json):
             raise ValueError("Input must be either location string or json destination")
@@ -64,22 +63,20 @@ class Tour:
 
 
 class TourPlanner:
-    def __init__(self, visited, time, nodes, base):
+    def __init__(self, visited, time, remaining, base):
         self.visited = visited
         self.time = time
-        self.nodes = nodes
+        self.remaining = remaining
         self.base = base
+        self.curr = self.visited[-1] if self.visited else None
 
-    def score(self, state, visited, nodes):
+    def score(self):
         # check if starting location
-        if bool(state['rating']) and bool(state['user_ratings_total']):
+        if self.curr:
             # if not, assign score as (rating/5 * number of reviews)/number of reviews * remaining nodes
             # makes heuristic always < the number of nodes remaining, which is the max true cost-to-go when the cost is
             # always 1
-            remaining = len(nodes) - len(visited)
-            reviews = state['user_ratings_total']
-            rating = state['rating'] / 5
-            score = ((rating * reviews) / reviews) * remaining
+            score = ((self.curr.rating * self.curr.reviews / 5.0) / self.curr.reviews) * len(self.remaining)
         else:
             # if starting state or has no reviews, assign score of 0
             score = 0
