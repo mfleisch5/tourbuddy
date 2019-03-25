@@ -3,10 +3,26 @@ import utils, requests, json
 API = utils.api()
 
 
+class Stop:
+    def __init__(self, data):
+        self.address = data['formatted_address']
+        self.x, self.y = tuple(data['geometry']['location'].values())
+        self.name = data['name']
+        self.rating = data['rating']
+        self.reviews = data['user_ratings_total']
+
+    def __eq__(self, o):
+        return isinstance(o, Stop) and self.name == o.name and (self.x, self.y) == (o.x, o.y)
+
+    def __hash__(self):
+        return hash(self.name) ^ hash(self.x) ^ hash(self.y) ^ hash((self.name, self.x, self.y))
+
+
 class Tour:
     def __init__(self, location=None, json_data=None):
         self.location = None
         self.places = None
+        self.stops = None
         self.initialize(location, json_data)
 
     def get_locality(self):
@@ -30,7 +46,8 @@ class Tour:
     def filter_destinations(self):
         self.places.sort(key=lambda dest: -dest['user_ratings_total'])
         del self.places[20:]
-        print(*[(dest['name'], dest['types'], dest['user_ratings_total']) for dest in self.places], sep='\n')
+        self.stops = set(Stop(place) for place in self.places)
+
 
     def initialize(self, location, dest_json):
         if bool(location) == bool(dest_json):
@@ -48,23 +65,23 @@ class Tour:
 
 class TourPlanner:
     def __init__(self, visited, time, nodes, base):
-        pass
-
-    def current_state(self):
-        pass
+        self.visited = visited
+        self.time = time
+        self.nodes = nodes
+        self.base = base
 
     def score(self, state, visited, nodes):
-        #check if starting location
+        # check if starting location
         if bool(state['rating']) and bool(state['user_ratings_total']):
-            #if not, assign score as (rating/5 * number of reviews)/number of reviews * remaining nodes
-            #makes heuristic always < the number of nodes remaining, which is the max true cost-to-go when the cost is
-            #always 1
+            # if not, assign score as (rating/5 * number of reviews)/number of reviews * remaining nodes
+            # makes heuristic always < the number of nodes remaining, which is the max true cost-to-go when the cost is
+            # always 1
             remaining = len(nodes) - len(visited)
             reviews = state['user_ratings_total']
             rating = state['rating'] / 5
             score = ((rating * reviews) / reviews) * remaining
         else:
-            #if starting state or has no reviews, assign score of 0
+            # if starting state or has no reviews, assign score of 0
             score = 0
 
         return score
@@ -81,7 +98,7 @@ class TourPlanner:
 
         start = (base, [], 0)  # (node, path, cost)
         fringe.push(start, 0)
-        
+
         while not fringe.isEmpty():
             (node, path, cost) = fringe.pop()
 
@@ -98,6 +115,7 @@ class TourPlanner:
                     fringe.push(state, priority)
 
         pass
+
 
 tour1 = Tour(location='23 Worcester Sq, 02118')
 tour1.filter_destinations()
