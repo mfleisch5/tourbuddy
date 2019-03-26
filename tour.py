@@ -63,14 +63,15 @@ class Tour:
 
 
 class TourPlanner:
-    def __init__(self, visited, time, remaining, base):
-        self.visited = visited
+    def __init__(self, node, time, remaining, base, visited):
         self.time = time
         self.remaining = remaining
+        self.visited = visited
         self.base = base
-        self.curr = self.visited[-1] if self.visited else None
+        self.node = node or base
 
     def score(self):
+        """
         # check if starting location
         if self.curr:
             # if not, assign score as (rating/5 * number of reviews)/number of reviews * remaining nodes
@@ -80,10 +81,13 @@ class TourPlanner:
         else:
             # if starting state or has no reviews, assign score of 0
             score = 0
+        """
+
+        score = ((self.node.rating * self.node.reviews / 5.0) / self.node.reviews) * len(self.remaining)
 
         return score
 
-    def next_stop(self):
+    def next_stops(self):
         pass
 
     def is_plausible(self):
@@ -93,22 +97,20 @@ class TourPlanner:
         # Need a priority queue to account for cost
         fringe = utils.PriorityQueue()
 
-        start = (base, [], 0)  # (node, path, cost)
-        fringe.push(start, 0)
-
+        fringe.push(self.node, 0)
         while not fringe.isEmpty():
-            (node, path, cost) = fringe.pop()
+            node = fringe.pop()
 
-            if node == base and not path.isEmpty():
-                return path
+            if node == base and not node.visited.isEmpty():
+                return node.visited
 
-            if not node in visited:
+            if node not in visited:
                 visited.add(node)
-                for n, action, cost in self.next_stop():
+                for stop in node.next_stops():
                     nCost = 1 + cost
                     nPath = path + [action]
                     state = (n, nPath, nCost)
-                    priority = self.score(n, visited, nodes) + nCost
+                    priority = stop.score + nCost
                     fringe.push(state, priority)
 
         pass
