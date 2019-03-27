@@ -61,14 +61,20 @@ class Tour:
                 self.places = data['places']
         self.filter_destinations()
 
+    def location_as_stop(self):
+        
 
-class TourPlanner:
-    def __init__(self, node, time, remaining, base, visited):
+    def plan(self):
+        the_plan = TourPlanner(1000, self.stops, self.location)
+
+
+class TourState:
+    def __init__(self, time, remaining, base, visited, node):
         self.time = time
         self.remaining = remaining
         self.visited = visited
         self.base = base
-        self.node = node or base
+        self.node = node
 
     def score(self):
         """
@@ -88,11 +94,40 @@ class TourPlanner:
         return score
 
     def next_stops(self):
-        dist = lambda n, o: math.sqrt((n.x - o.x) ** 2 + (n.y - o.y) ** 2)
-        queue =
+        dist = lambda o: math.sqrt((self.node.x - o.x) ** 2 + (self.node.y - o.y) ** 2)
+        queue, stops = set(self.remaining), []
+        for _ in range(3):
+            next_stop = min(queue, key=dist)
+            queue.remove(next_stop)
+            stops.append(next_stop)
+        # https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=Washington,DC&destinations=New+York+City,NY&key=YOUR_API_KEY
+        return stops
 
     def is_plausible(self):
         pass
+
+
+class TourPlanner(TourState):
+    def __init__(self, time, remaining, base):
+        TourState.__init__(self, time, remaining, base, set(), base)
+
+    def score(self):
+        """
+        # check if starting location
+        if self.curr:
+            # if not, assign score as (rating/5 * number of reviews)/number of reviews * remaining nodes
+            # makes heuristic always < the number of nodes remaining, which is the max true cost-to-go when the cost is
+            # always 1
+            score = ((self.curr.rating * self.curr.reviews / 5.0) / self.curr.reviews) * len(self.remaining)
+        else:
+            # if starting state or has no reviews, assign score of 0
+            score = 0
+        """
+
+        return 0
+
+    def is_plausible(self):
+        return True
 
     def search(self):
         # Need a priority queue to account for cost
@@ -103,7 +138,7 @@ class TourPlanner:
             node = fringe.pop()
             self.visited.add(node)
             self.remaining.remove(node)
-            if node == self.base and not node.visited.isEmpty():
+            if node == self.base and node.visited:
                 return node.visited
             for stop in node.next_stops():
                 if stop not in self.visited:
