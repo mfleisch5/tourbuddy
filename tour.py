@@ -4,18 +4,21 @@ API = utils.api()
 
 
 class Stop:
-    def __init__(self, data):
-        self.address = data['formatted_address']
-        self.x, self.y = tuple(data['geometry']['location'].values())
-        self.name = data['name']
-        self.rating = float(data['rating'])
-        self.reviews = float(data['user_ratings_total'])
+    def __init__(self, address, coords, name, rating, reviews):
+        self.address = address
+        self.x, self.y = coords
+        self.name = name
+        self.rating = float(rating)
+        self.reviews = reviews
 
     def __eq__(self, o):
         return isinstance(o, Stop) and self.name == o.name and (self.x, self.y) == (o.x, o.y)
 
     def __hash__(self):
         return hash(self.name) ^ hash(self.x) ^ hash(self.y) ^ hash((self.name, self.x, self.y))
+
+    def __str__(self):
+        return ' '.join([self.name, str(self.x), str(self.y), str(self.rating), str(self.reviews)])
 
 
 class Tour:
@@ -25,15 +28,19 @@ class Tour:
         self.stops = None
         self.initialize(location, json_data)
 
-    def get_locality(self):
+    @staticmethod
+    def geo_locality(address):
         query = 'https://maps.googleapis.com/maps/api/' \
-                'geocode/json?address={}&key={}'.format(self.location.replace(' ', '+'), API)
-        address_components = requests.get(query).json()['results'][0]['address_components']
+                'geocode/json?address={}&key={}'.format(address.replace(' ', '+'), API)
+        response = requests.get(query).json()['results'][0]
+        coords = tuple(response['geometry']['location'].values())
+        address_components = response['address_components']
         locality = next(comp for comp in address_components if 'locality' in comp['types'])['short_name'].strip()
-        return locality
+        return coords, locality
 
-    def get_places(self):
-        locality = self.get_locality().lower().replace(' ', '+')
+    @staticmethod
+    def get_places(locality):
+        locality = locality.lower().replace(' ', '+')
         query = 'https://maps.googleapis.com/maps/api/place/textsearch/json?' \
                 'query={}+point+of+interest&language=en&key={}'.format(locality, API)
         return requests.get(query).json()['results']
@@ -46,26 +53,27 @@ class Tour:
     def filter_destinations(self):
         self.places.sort(key=lambda dest: -dest['user_ratings_total'])
         del self.places[20:]
-        self.stops = set(Stop(place) for place in self.places)
+        stop = lambda p: Stop(p['formatted_address'], tuple(p['geometry']['location'].values()), p['name'],
+                              p['rating'], p['user_ratings_total'])
+        self.stops = set(stop(place) for place in self.places)
 
     def initialize(self, location, dest_json):
         if bool(location) == bool(dest_json):
             raise ValueError("Input must be either location string or json destination")
         if location:
-            self.location = location
-            self.places = self.get_places()
+            coords, locality = Tour.geo_locality(location)
+            self.location = location, coords
+            self.places = Tour.get_places(locality)
         else:
             with open(dest_json, 'r') as dj:
                 data = json.load(dj)
-                self.location = data['location']
+                self.location = data['location']['address'], tuple(data['location']['coordinates'])
                 self.places = data['places']
         self.filter_destinations()
 
-    def location_as_stop(self):
-        
-
     def plan(self):
-        the_plan = TourPlanner(1000, self.stops, self.location)
+        the_plan = TourPlanner(1000, self.stops, Stop(*self.location, 'base', 0.0, 0))
+        print(the_plan.next_stops())
 
 
 class TourState:
@@ -96,11 +104,12 @@ class TourState:
     def next_stops(self):
         dist = lambda o: math.sqrt((self.node.x - o.x) ** 2 + (self.node.y - o.y) ** 2)
         queue, stops = set(self.remaining), []
-        for _ in range(3):
+        for _ in range(min(len(self.remaining), 3)):
             next_stop = min(queue, key=dist)
             queue.remove(next_stop)
             stops.append(next_stop)
         # https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=Washington,DC&destinations=New+York+City,NY&key=YOUR_API_KEY
+        print(*stops, self.node)
         return stops
 
     def is_plausible(self):
@@ -112,18 +121,6 @@ class TourPlanner(TourState):
         TourState.__init__(self, time, remaining, base, set(), base)
 
     def score(self):
-        """
-        # check if starting location
-        if self.curr:
-            # if not, assign score as (rating/5 * number of reviews)/number of reviews * remaining nodes
-            # makes heuristic always < the number of nodes remaining, which is the max true cost-to-go when the cost is
-            # always 1
-            score = ((self.curr.rating * self.curr.reviews / 5.0) / self.curr.reviews) * len(self.remaining)
-        else:
-            # if starting state or has no reviews, assign score of 0
-            score = 0
-        """
-
         return 0
 
     def is_plausible(self):
@@ -146,5 +143,5 @@ class TourPlanner(TourState):
 
 
 tour1 = Tour(location='23 Worcester Sq, 02118')
-tour1.filter_destinations()
+tour1.plan()
 # tour2.filter_destinations()

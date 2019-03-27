@@ -1,5 +1,9 @@
 {
-    "location": "Via Borgo Dora, 33 8\u00b0 Piano (eight floor), Turin, Piedmont 10152, Italy",
+    "location":
+        {
+            "address": "Via Borgo Dora, 33 8\u00b0 Piano (eight floor), Turin, Piedmont 10152, Italy",
+            "coordinates": [45.080127, 7.683913]
+        },
     "places": [
         {
             "formatted_address": "Via Accademia delle Scienze, 5, 10123 Torino TO, Italy",
