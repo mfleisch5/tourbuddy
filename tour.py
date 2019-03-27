@@ -1,4 +1,4 @@
-import utils, requests, json
+import utils, requests, json, math
 
 API = utils.api()
 
@@ -88,32 +88,26 @@ class TourPlanner:
         return score
 
     def next_stops(self):
-        pass
+        dist = lambda n, o: math.sqrt((n.x - o.x) ** 2 + (n.y - o.y) ** 2)
+        queue =
 
     def is_plausible(self):
         pass
 
-    def search(self, base, visited, nodes):
+    def search(self):
         # Need a priority queue to account for cost
         fringe = utils.PriorityQueue()
 
         fringe.push(self.node, 0)
         while not fringe.isEmpty():
             node = fringe.pop()
-
-            if node == base and not node.visited.isEmpty():
+            self.visited.add(node)
+            self.remaining.remove(node)
+            if node == self.base and not node.visited.isEmpty():
                 return node.visited
-
-            if node not in visited:
-                visited.add(node)
-                for stop in node.next_stops():
-                    nCost = 1 + cost
-                    nPath = path + [action]
-                    state = (n, nPath, nCost)
-                    priority = stop.score + nCost
-                    fringe.push(state, priority)
-
-        pass
+            for stop in node.next_stops():
+                if stop not in self.visited:
+                    fringe.update(stop, stop.score())
 
 
 tour1 = Tour(location='23 Worcester Sq, 02118')

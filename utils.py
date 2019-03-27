@@ -1,5 +1,6 @@
 import json
 
+
 def api():
     with open('config.json', 'r') as jf:
         return json.load(jf)['api']
@@ -9,33 +10,32 @@ def api():
 # using Queue.
 class PriorityQueue(object):
     def __init__(self):
-        self.queue = []
+        self.heap = []
+        self.count = 0
 
-    def __str__(self):
-        return ' '.join([str(i) for i in self.queue])
+    def push(self, item, priority):
+        entry = (priority, self.count, item)
+        heapq.heappush(self.heap, entry)
+        self.count += 1
 
-    # for checking if the queue is empty
-    def isEmpty(self):
-        return len(self.queue) == []
-
-    # for inserting an element in the queue
-    def push(self, data, priority):
-        d = {'data': data, 'priority': priority}
-
-        self.queue.append(d)
-
-    # for popping an element based on Priority
     def pop(self):
-        try:
-            max = 0
-            for i in range(len(self.queue)):
-                if self.queue[i]['priority'] > self.queue[max]['priority']:
-                    max = i
-            item = self.queue[max]['data']
-            del self.queue[max]
-            return item
-        except IndexError:
-            print()
-            exit()
+        (_, _, item) = heapq.heappop(self.heap)
+        return item
 
+    def isEmpty(self):
+        return len(self.heap) == 0
 
+    def update(self, item, priority):
+        # If item already in priority queue with higher priority, update its priority and rebuild the heap.
+        # If item already in priority queue with equal or lower priority, do nothing.
+        # If item not in priority queue, do the same thing as self.push.
+        for index, (p, c, i) in enumerate(self.heap):
+            if i == item:
+                if p <= priority:
+                    break
+                del self.heap[index]
+                self.heap.append((priority, c, item))
+                heapq.heapify(self.heap)
+                break
+        else:
+            self.push(item, priority)
