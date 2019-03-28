@@ -46,7 +46,7 @@ class Tour:
         return requests.get(query).json()['results']
 
     def dump_places(self, file):
-        compressed = {'location': self.location, 'places': self.get_places()}
+        compressed = {'location': dict(zip(('address', 'coordinates'), self.location)), 'places': self.places}
         with open(file, 'w') as jf:
             json.dump(compressed, jf, indent=4)
 
@@ -72,7 +72,8 @@ class Tour:
         self.filter_destinations()
 
     def plan(self):
-        the_plan = TourPlanner(1000, self.stops, Stop(*self.location, 'base', 0.0, 0))
+        base = Stop(*self.location, 'base', 0.0, 0)
+        the_plan = TourPlanner(1000, self.stops, base)
         print(the_plan.next_stops())
 
 
@@ -130,18 +131,22 @@ class TourPlanner(TourState):
         # Need a priority queue to account for cost
         fringe = utils.PriorityQueue()
 
-        fringe.push(self.node, 0)
+        fringe.push(self, 0)
         while not fringe.isEmpty():
-            node = fringe.pop()
+            state = fringe.pop()
             self.visited.add(node)
             self.remaining.remove(node)
-            if node == self.base and node.visited:
-                return node.visited
-            for stop in node.next_stops():
-                if stop not in self.visited:
-                    fringe.update(stop, stop.score())
+            if state.node == self.base and state.visited:
+                return state.visited
+            for next_state in state.next_stops():
+                next_stop = next_state.node
+                if next_stop not in self.visited:
+                    fringe.update(next_stop, next_state.score())
+
+        # All nodes are checked for plausibility and once all nodes are implausible the queue will die out which will
+        # lead to result
 
 
-tour1 = Tour(location='23 Worcester Sq, 02118')
+tour1 = Tour(json_data='turin.json')
 tour1.plan()
 # tour2.filter_destinations()
