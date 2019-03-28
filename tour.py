@@ -12,13 +12,13 @@ class Stop:
         self.reviews = reviews
 
     def __eq__(self, o):
-        return isinstance(o, Stop) and self.name == o.name and (self.x, self.y) == (o.x, o.y)
+        return isinstance(o, Stop) and self.name == o.name and self.coords == o.coords
 
     def __hash__(self):
-        return hash(self.name) ^ hash(self.x) ^ hash(self.y) ^ hash((self.name, self.x, self.y))
+        return hash(self.name) ^ hash(self.coords) ^ hash((self.name, self.coords))
 
     def __str__(self):
-        return ' '.join([self.name, str(self.x), str(self.y), str(self.rating), str(self.reviews)])
+        return ' '.join([self.name, str(self.coords[0]), str(self.coords[1]), str(self.rating), str(self.reviews)])
 
 
 class Tour:
@@ -73,17 +73,19 @@ class Tour:
 
     def plan(self):
         base = Stop(*self.location, 'base', 0.0, 0)
-        the_plan = TourPlanner(1000, self.stops, base)
-        the_plan.next_states()
+        the_plan = TourPlanner(36000, self.stops.union({base}), base)
+        the_plan.search()
 
 
 class TourState:
-    def __init__(self, time, remaining, base, visited, node):
+    def __init__(self, node, time, remaining, path, tcost, base):
         self.time = time
         self.remaining = remaining
-        self.visited = visited
         self.base = base
         self.node = node
+        self.path = path
+        self.tcost = tcost
+        self.path_hash = ''.join(set(stop.name for stop in self.path))
 
     def score(self):
         """
@@ -98,34 +100,49 @@ class TourState:
             score = 0
         """
 
-        score = ((self.node.rating * self.node.reviews / 5.0) / self.node.reviews) * len(self.remaining)
+        #  score = ((self.node.rating * self.node.reviews / 5.0) / self.node.reviews) * len(self.remaining)
+
+        score = -(self.node.rating * self.node.reviews)
 
         return score
 
     def next_states(self):
         queue, states = set(self.remaining), []
         walk_time = lambda o: utils.wt(self.node.coords, o.coords)
-        i = min(len(self.remaining), 5)
+        i = min(len(self.remaining), 3)
         while i > 0 and queue:
             next_stop = min(queue, key=walk_time)
             next_remaining = set(self.remaining)
             next_remaining.remove(next_stop)
-            next_state = TourState(self.time - walk_time(next_stop), next_remaining, self.base,
-                                   self.visited.union({next_stop}), next_stop)
+            stop_time = walk_time(next_stop) + 1000
+            next_state = TourState(next_stop, self.time - stop_time, next_remaining, self.path + [next_stop],
+                                   self.tcost + stop_time, self.base)
             queue.remove(next_stop)
             if next_state.is_plausible():
                 states.append(next_state)
                 i -= 1
+            else:
+                print('Not plausible: ', next_state)
         # https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=Washington,DC&destinations=New+York+City,NY&key=YOUR_API_KEY
+        #print(*states, sep='\n')
         return states
 
     def is_plausible(self):
         return (self.time - utils.wt(self.node.coords, self.base.coords)) > 0
 
+    def __str__(self):
+        return ' | '.join([str(len(self.remaining)), self.node.name, '-->'.join([stop.name for stop in self.path]), str(self.tcost)])
+
+    def __hash__(self):
+        return hash(self.path_hash)
+
+    def __eq__(self, o):
+        return isinstance(o, TourState) and self.path_hash == o.path_hash
+
 
 class TourPlanner(TourState):
     def __init__(self, time, remaining, base):
-        TourState.__init__(self, time, remaining, base, set(), base)
+        TourState.__init__(self, base, time, remaining, [base], 0, base)
 
     def score(self):
         return 0
@@ -136,24 +153,46 @@ class TourPlanner(TourState):
     def search(self):
         # Need a priority queue to account for cost
         fringe = utils.PriorityQueue()
-
-        fringe.push(self, 0)
+        visited = set()
+        fringe.push(self, self.score())
+        visited.add(self)
+        curr_state = None
         while not fringe.isEmpty():
-            state = fringe.pop()
-            node = state.node
-            self.visited.add(node)
-            self.remaining.remove(node)
-            if state.node == self.base and state.visited:
-                return state.visited
-            for next_state in state.next_states():
-                next_stop = next_state.node
-                if next_stop not in self.visited:
-                    fringe.update(next_state, next_state.score())
+            curr_state = fringe.pop()
+            print(curr_state)
+            if len(curr_state.path) == len(self.remaining):
+                break
+            visited.add(curr_state)
+            for next_state in curr_state.next_states():
+                if next_state not in visited:
+                    fringe.update(next_state, next_state.tcost + next_state.score())
+        print('FINAL PATH:  ' + '--->'.join([stop.name for stop in curr_state.path]))
+        print('FINAL PATH LEN: ', len(curr_state.path))
+        print('Time left:', curr_state.time)
 
         # All nodes are checked for plausibility and once all nodes are implausible the queue will die out which will
         # lead to result
 
 
-tour1 = Tour(json_data='turin.json')
+tour1 = Tour(location='360 Huntington Ave, 02115')
 tour1.plan()
 # tour2.filter_destinations()
+
+
+"""
+def aStarSearch(problem, heuristic=nullHeuristic):
+    "Search the node that has the lowest combined cost and heuristic first."
+    visited = set()
+    queue = util.PriorityQueue()
+    queue.push((problem.getStartState(), [], 0), heuristic(problem.getStartState(), problem))
+    while not queue.isEmpty():
+        vertice = queue.pop()
+        visited.add(vertice[0])
+        if problem.isGoalState(vertice[0]):
+            return vertice[1]
+        for edge in problem.getSuccessors(vertice[0]):
+            if edge[0] not in visited:
+                cost = edge[2] + vertice[2]
+                queue.update((edge[0], vertice[1] + [edge[1]], cost), cost + heuristic(edge[0], problem))
+
+"""
