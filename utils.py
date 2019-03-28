@@ -1,9 +1,15 @@
 import json, heapq
+from haversine import haversine as hs
 
 
 def api():
     with open('config.json', 'r') as jf:
         return json.load(jf)['api']
+
+
+def wt(p1, p2):
+    dist = hs(p1, p2, unit='mi')
+    return dist * 3600 / 2.2
 
 
 # A simple implementation of Priority Queue

@@ -1,4 +1,4 @@
-import utils, requests, json, math
+import utils, requests, json
 
 API = utils.api()
 
@@ -6,7 +6,7 @@ API = utils.api()
 class Stop:
     def __init__(self, address, coords, name, rating, reviews):
         self.address = address
-        self.x, self.y = coords
+        self.coords = coords
         self.name = name
         self.rating = float(rating)
         self.reviews = reviews
@@ -74,7 +74,7 @@ class Tour:
     def plan(self):
         base = Stop(*self.location, 'base', 0.0, 0)
         the_plan = TourPlanner(1000, self.stops, base)
-        print(the_plan.next_stops())
+        the_plan.next_states()
 
 
 class TourState:
@@ -102,19 +102,25 @@ class TourState:
 
         return score
 
-    def next_stops(self):
-        dist = lambda o: math.sqrt((self.node.x - o.x) ** 2 + (self.node.y - o.y) ** 2)
-        queue, stops = set(self.remaining), []
-        for _ in range(min(len(self.remaining), 3)):
-            next_stop = min(queue, key=dist)
+    def next_states(self):
+        queue, states = set(self.remaining), []
+        walk_time = lambda o: utils.wt(self.node.coords, o.coords)
+        i = min(len(self.remaining), 5)
+        while i > 0 and queue:
+            next_stop = min(queue, key=walk_time)
+            next_remaining = set(self.remaining)
+            next_remaining.remove(next_stop)
+            next_state = TourState(self.time - walk_time(next_stop), next_remaining, self.base,
+                                   self.visited.union({next_stop}), next_stop)
             queue.remove(next_stop)
-            stops.append(next_stop)
+            if next_state.is_plausible():
+                states.append(next_state)
+                i -= 1
         # https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=Washington,DC&destinations=New+York+City,NY&key=YOUR_API_KEY
-        print(*stops, self.node)
-        return stops
+        return states
 
     def is_plausible(self):
-        pass
+        return (self.time - utils.wt(self.node.coords, self.base.coords)) > 0
 
 
 class TourPlanner(TourState):
@@ -134,14 +140,15 @@ class TourPlanner(TourState):
         fringe.push(self, 0)
         while not fringe.isEmpty():
             state = fringe.pop()
+            node = state.node
             self.visited.add(node)
             self.remaining.remove(node)
             if state.node == self.base and state.visited:
                 return state.visited
-            for next_state in state.next_stops():
+            for next_state in state.next_states():
                 next_stop = next_state.node
                 if next_stop not in self.visited:
-                    fringe.update(next_stop, next_state.score())
+                    fringe.update(next_state, next_state.score())
 
         # All nodes are checked for plausibility and once all nodes are implausible the queue will die out which will
         # lead to result
