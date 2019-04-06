@@ -20,3 +20,7 @@ The model itself is structured as follows:
   * Next States is the successor function
   * Is Plausible calculates whether the location can be reached in the remaining time. If not it gives the state a high cost
 * The Stop class represents specific locations (landmarks) 
+
+There is some room for improvement in the model. Our heuristic function is not as sophisticated as we would like and this results in the returned tours often going very far from the start and not having many landmarks on the way back. The tours complete in time, but the routes themselves are not entertaining the whole way through. In addition, we would like to make it so that users can input their preferences (art vs history vs parks, etc.) at the beginning of the process so that the route is more tailored to the specific user. 
+
+This means that the endgame for our project is to redo the heuristic function to make routes more entertaining the whole way through, and to include a system for collecting and integrating user preferences. 
