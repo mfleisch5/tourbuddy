@@ -1,4 +1,4 @@
-import utils, requests, json
+import utils, requests, json, argparse
 
 API = utils.api()
 
@@ -22,11 +22,12 @@ class Stop:
 
 
 class Tour:
-    def __init__(self, location=None, json_data=None):
+    def __init__(self, location, json_data, h, m, s):
         self.location = None
         self.places = None
         self.stops = None
         self.initialize(location, json_data)
+        self.duration = (h * 3600) + (m * 60) + s
 
     @staticmethod
     def geo_locality(address):
@@ -73,7 +74,7 @@ class Tour:
 
     def plan(self):
         base = Stop(*self.location, 'base', 0.0, 0)
-        the_plan = TourPlanner(36000, self.stops.union({base}), base)
+        the_plan = TourPlanner(self.duration, self.stops.union({base}), base)
         the_plan.search()
 
 
@@ -109,7 +110,7 @@ class TourState:
     def next_states(self):
         queue, states = set(self.remaining), []
         walk_time = lambda o: utils.wt(self.node.coords, o.coords)
-        i = min(len(self.remaining), 3)
+        i = min(len(self.remaining), 5)
         while i > 0 and queue:
             next_stop = min(queue, key=walk_time)
             next_remaining = set(self.remaining)
@@ -124,14 +125,15 @@ class TourState:
             else:
                 print('Not plausible: ', next_state)
         # https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=Washington,DC&destinations=New+York+City,NY&key=YOUR_API_KEY
-        #print(*states, sep='\n')
+        #  print(*states, sep='\n')
         return states
 
     def is_plausible(self):
         return (self.time - utils.wt(self.node.coords, self.base.coords)) > 0
 
     def __str__(self):
-        return ' | '.join([str(len(self.remaining)), self.node.name, '-->'.join([stop.name for stop in self.path]), str(self.tcost)])
+        return ' | '.join([str(len(self.remaining)), self.node.name, '-->'.join([stop.name for stop in self.path]),
+                           str(self.tcost)])
 
     def __hash__(self):
         return hash(self.path_hash)
@@ -174,9 +176,28 @@ class TourPlanner(TourState):
         # lead to result
 
 
-tour1 = Tour(location='360 Huntington Ave, 02115')
-tour1.plan()
+#tour1 = Tour(location='360 Huntington Ave, 02115')
+#tour1.plan()
 # tour2.filter_destinations()
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    locations = parser.add_mutually_exclusive_group()
+    locations.add_argument('-a', '--address', help='The address of your hotel', default=None)
+    locations.add_argument('-p', '--path', help='The path of input file', default=None)
+    duration = parser.add_argument_group(description='The duration of your tour')
+    duration.add_argument('-hr', '--hours', type=float, default=0.0)
+    duration.add_argument('-m', '--mins', type=float, default=0.0)
+    duration.add_argument('-s', '--seconds', type=float, default=0.0)
+
+    args = parser.parse_args()
+
+
+    print(args.address, args.hours)
+
+
+
 
 
 """
