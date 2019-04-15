@@ -1,4 +1,4 @@
-import utils, requests, json, argparse
+import utils, math, requests, json, argparse, sys
 
 API = utils.api()
 
@@ -73,8 +73,7 @@ class Tour:
         self.filter_destinations()
 
     def plan(self):
-        base = Stop(*self.location, 'base', 0.0, 0)
-        the_plan = TourPlanner(self.duration, self.stops.union({base}), base)
+        the_plan = TourPlanner(self.duration, self.stops, Stop(*self.location, 'base', 0.0, 0))
         the_plan.search()
 
 
@@ -87,6 +86,7 @@ class TourState:
         self.path = path
         self.tcost = tcost
         self.path_hash = ''.join(set(stop.name for stop in self.path))
+        self.next_states = None
 
     def score(self):
         """
@@ -103,14 +103,18 @@ class TourState:
 
         #  score = ((self.node.rating * self.node.reviews / 5.0) / self.node.reviews) * len(self.remaining)
 
-        score = -(self.node.rating * self.node.reviews)
+        score = utils.wt(self.node.coords, self.base.coords) - (200 * self.node.rating * (self.node.reviews ** 0.5))
 
         return score
 
-    def next_states(self):
+    def is_goal(self):
+        self.next_states = self.find_next_states()
+        return not self.next_states
+
+    def find_next_states(self):
         queue, states = set(self.remaining), []
         walk_time = lambda o: utils.wt(self.node.coords, o.coords)
-        i = min(len(self.remaining), 5)
+        i = min(len(self.remaining), 3)
         while i > 0 and queue:
             next_stop = min(queue, key=walk_time)
             next_remaining = set(self.remaining)
@@ -121,9 +125,8 @@ class TourState:
             queue.remove(next_stop)
             if next_state.is_plausible():
                 states.append(next_state)
-                i -= 1
-            else:
-                print('Not plausible: ', next_state)
+            i -= 1
+
         # https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=Washington,DC&destinations=New+York+City,NY&key=YOUR_API_KEY
         #  print(*states, sep='\n')
         return states
@@ -132,8 +135,7 @@ class TourState:
         return (self.time - utils.wt(self.node.coords, self.base.coords)) > 0
 
     def __str__(self):
-        return ' | '.join([str(len(self.remaining)), self.node.name, '-->'.join([stop.name for stop in self.path]),
-                           str(self.tcost)])
+        return ' | '.join([str(self.score()), str(len(self.remaining)), self.node.name, '-->'.join([stop.name for stop in self.path])])
 
     def __hash__(self):
         return hash(self.path_hash)
@@ -161,14 +163,15 @@ class TourPlanner(TourState):
         curr_state = None
         while not fringe.isEmpty():
             curr_state = fringe.pop()
-            print(curr_state)
-            if len(curr_state.path) == len(self.remaining):
+            if curr_state.is_goal():
+                print(curr_state.next_states)
                 break
+            print(curr_state)
             visited.add(curr_state)
-            for next_state in curr_state.next_states():
+            for next_state in curr_state.next_states:
                 if next_state not in visited:
                     fringe.update(next_state, next_state.tcost + next_state.score())
-        print('FINAL PATH:  ' + '--->'.join([stop.name for stop in curr_state.path]))
+        print('FINAL PATH:  ' + '--->'.join([stop.name for stop in curr_state.path]) + '--->base')
         print('FINAL PATH LEN: ', len(curr_state.path))
         print('Time left:', curr_state.time)
 
@@ -176,44 +179,25 @@ class TourPlanner(TourState):
         # lead to result
 
 
-#tour1 = Tour(location='360 Huntington Ave, 02115')
-#tour1.plan()
+# tour1 = Tour(location='360 Huntington Ave, 02115')
+# tour1.plan()
 # tour2.filter_destinations()
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    locations = parser.add_mutually_exclusive_group()
-    locations.add_argument('-a', '--address', help='The address of your hotel', default=None)
-    locations.add_argument('-p', '--path', help='The path of input file', default=None)
+    parser.add_argument('input', help='The address of your hotel or the path of your input file')
     duration = parser.add_argument_group(description='The duration of your tour')
     duration.add_argument('-hr', '--hours', type=float, default=0.0)
     duration.add_argument('-m', '--mins', type=float, default=0.0)
     duration.add_argument('-s', '--seconds', type=float, default=0.0)
 
     args = parser.parse_args()
+    duration = args.hours, args.mins, args.seconds
+    inputs = (args.input, None) if not '.json' in args.input else (None, args.input)
+    if not any(duration):
+        print("Need to input duration")
+        sys.exit(1)
 
-
-    print(args.address, args.hours)
-
-
-
-
-
-"""
-def aStarSearch(problem, heuristic=nullHeuristic):
-    "Search the node that has the lowest combined cost and heuristic first."
-    visited = set()
-    queue = util.PriorityQueue()
-    queue.push((problem.getStartState(), [], 0), heuristic(problem.getStartState(), problem))
-    while not queue.isEmpty():
-        vertice = queue.pop()
-        visited.add(vertice[0])
-        if problem.isGoalState(vertice[0]):
-            return vertice[1]
-        for edge in problem.getSuccessors(vertice[0]):
-            if edge[0] not in visited:
-                cost = edge[2] + vertice[2]
-                queue.update((edge[0], vertice[1] + [edge[1]], cost), cost + heuristic(edge[0], problem))
-
-"""
+    tour = Tour(*inputs, *duration)
+    tour.plan()
